@@ -1,5 +1,5 @@
 <div align = "center">
-    <img src = "blob:https://carbon.now.sh/edbca307-6951-40a7-b8dd-89d706ae64b3">
+    <img src = "https://imgur.com/7C6yOJc">
     <hr>
     <br>
     <a href="https://discord.gg/menudocs">
