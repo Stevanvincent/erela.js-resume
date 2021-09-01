@@ -192,17 +192,20 @@ class Node {
         }, this.options.retryDelay);
     }
     open() {
-        if (this.reconnectTimeout)
-            clearTimeout(this.reconnectTimeout);
-        this.manager.emit("nodeConnect", this);
-
-        this.socket.send(JSON.stringify({
-            "op": "configureResuming",
-            "key": !this.options.resumeKey ? 'key' : this.options.resumeKey,
-            "timeout": this.options.resumeTimeout
-        }));
-
-
+        if (this.options.resumeKey) {
+            if (this.reconnectTimeout)
+                clearTimeout(this.reconnectTimeout);
+            this.manager.emit("nodeConnect", this);
+            this.socket.send(JSON.stringify({
+                "op": "configureResuming",
+                "key": this.options.resumeKey,
+                "timeout": this.options.resumeTimeout
+            }));
+        } else {
+            if (this.reconnectTimeout)
+                clearTimeout(this.reconnectTimeout);
+            this.manager.emit("nodeConnect", this);
+        }
     }
     close(code, reason) {
         this.manager.emit("nodeDisconnect", this, { code, reason });
