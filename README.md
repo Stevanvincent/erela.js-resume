@@ -1,5 +1,5 @@
 <div align = "center">
-    <img src = "https://solaris.codes/projects/erelajs/images/transparent_logo.png">
+    <img src = "blob:https://carbon.now.sh/edbca307-6951-40a7-b8dd-89d706ae64b3">
     <hr>
     <br>
     <a href="https://discord.gg/menudocs">
