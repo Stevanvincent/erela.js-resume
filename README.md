@@ -1,5 +1,5 @@
 <div align = "center">
-    <img src = "https://imgur.com/7C6yOJc">
+    <img src = "https://imgur.com/7C6yOJc.png">
     <hr>
     <br>
     <a href="https://discord.gg/menudocs">
