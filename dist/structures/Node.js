@@ -198,7 +198,7 @@ class Node {
 
         this.socket.send(JSON.stringify({
             "op": "configureResuming",
-            "key": this.options.resumeKey,
+            "key": !this.options.resumeKey ? 'key' : this.options.resumeKey,
             "timeout": this.options.resumeTimeout
         }));
 
