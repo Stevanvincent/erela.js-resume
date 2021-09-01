@@ -195,11 +195,6 @@ class Node {
         if (this.reconnectTimeout)
             clearTimeout(this.reconnectTimeout);
         this.manager.emit("nodeConnect", this);
-        this.manager.send({
-            "op": "configureResuming",
-            "key": this.options.resumeKey,
-            "timeout": !this.options.resumeTimeout ? 60 : this.options.resumeTimeout
-        })
     }
     close(code, reason) {
         this.manager.emit("nodeDisconnect", this, { code, reason });
