@@ -93,14 +93,26 @@ class Manager extends events_1.EventEmitter {
         return this.nodes
             .filter((node) => node.connected)
             .sort((a, b) => {
-            const aload = a.stats.cpu
-                ? (a.stats.cpu.systemLoad / a.stats.cpu.cores) * 100
-                : 0;
-            const bload = b.stats.cpu
-                ? (b.stats.cpu.systemLoad / b.stats.cpu.cores) * 100
-                : 0;
-            return aload - bload;
-        });
+                const aload = a.stats.cpu
+                    ? (a.stats.cpu.systemLoad / a.stats.cpu.cores) * 100
+                    : 0;
+                const bload = b.stats.cpu
+                    ? (b.stats.cpu.systemLoad / b.stats.cpu.cores) * 100
+                    : 0;
+                return aload - bload;
+            });
+    }
+    /** Returns the least uptime Nodes. */
+    get leastUptimeNodes() {
+        return this.nodes
+            .filter((node) => node.connected)
+            .sort((a, b) => {
+                const auptime = a.stats.uptime
+
+                const buptime = b.stats.cpu
+
+                return auptime - buptime;
+            });
     }
     /**
      * Initiates the Manager.
