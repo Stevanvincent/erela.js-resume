@@ -109,7 +109,7 @@ class Manager extends events_1.EventEmitter {
             .sort((a, b) => {
                 const auptime = a.stats.uptime
 
-                const buptime = b.stats.cpu
+                const buptime = b.stats.uptime
 
                 return auptime - buptime;
             });
