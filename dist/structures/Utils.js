@@ -11,18 +11,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Plugin = exports.Structure = exports.TrackUtils = void 0;
 /** @hidden */
-const TRACK_SYMBOL = Symbol("track"), 
-/** @hidden */
-UNRESOLVED_TRACK_SYMBOL = Symbol("unresolved"), SIZES = [
-    "0",
-    "1",
-    "2",
-    "3",
-    "default",
-    "mqdefault",
-    "hqdefault",
-    "maxresdefault",
-];
+const TRACK_SYMBOL = Symbol("track"),
+    /** @hidden */
+    UNRESOLVED_TRACK_SYMBOL = Symbol("unresolved"), SIZES = [
+        "0",
+        "1",
+        "2",
+        "3",
+        "default",
+        "mqdefault",
+        "hqdefault",
+        "maxresdefault",
+    ];
 /** @hidden */
 const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 class TrackUtils {
@@ -156,7 +156,7 @@ class TrackUtils {
             if (!TrackUtils.isUnresolvedTrack(unresolvedTrack))
                 throw new RangeError("Provided track is not a UnresolvedTrack.");
             const query = [unresolvedTrack.author, unresolvedTrack.title].filter(str => !!str).join(" - ");
-            const res = yield TrackUtils.manager.search(query, unresolvedTrack.requester);
+            const res = yield TrackUtils.manager.search({ source: "soundcloud", query: query }, unresolvedTrack.requester);
             if (res.loadType !== "SEARCH_RESULT")
                 throw (_a = res.exception) !== null && _a !== void 0 ? _a : {
                     message: "No tracks found.",
