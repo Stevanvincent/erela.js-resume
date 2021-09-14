@@ -148,7 +148,7 @@ class Manager extends events_1.EventEmitter {
                 soundcloud: "sc",
                 youtube: "yt",
             };
-            const source = sources[(_a = query.source) !== null && _a !== void 0 ? _a : "youtube"];
+            const source = sources[(_a = query.source) !== null && _a !== void 0 ? _a : "soundcloud"];
             let search = query.query || query;
             if (!/^https?:\/\//.test(search)) {
                 search = `${source}search:${search}`;
