@@ -157,7 +157,7 @@ class TrackUtils {
                 throw new RangeError("Provided track is not a UnresolvedTrack.");
             const query = [unresolvedTrack.author, unresolvedTrack.title].filter(str => !!str).join(" - ");
             const res = yield TrackUtils.manager.search({ query: query, source: "soundcloud" }, unresolvedTrack.requester);
-            if (res.loadType !== "SEARCH_RESULT")
+            if (res.loadType !== "SEARCH_RESULT" || (res.loadType === "SEARCH_RESULT" && !res.tracks.length))
                 throw (_a = res.exception) !== null && _a !== void 0 ? _a : {
                     message: "No tracks found.",
                     severity: "COMMON",
