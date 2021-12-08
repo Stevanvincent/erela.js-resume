@@ -256,7 +256,7 @@ class Manager extends events_1.EventEmitter {
      * @param data
      */
     updateVoiceState(data) {
-       if (!data ||
+        if (!data ||
             !["VOICE_SERVER_UPDATE", "VOICE_STATE_UPDATE"].includes(data.t || ""))
             return;
         const player = this.players.get(data.d.guild_id);
@@ -275,6 +275,12 @@ class Manager extends events_1.EventEmitter {
             if (player.voiceChannel !== data.d.channel_id) {
                 this.emit("playerMove", player, player.voiceChannel, data.d.channel_id);
                 data.d.channel_id = player.voiceChannel;
+                player.pause(true);
+            }
+        }
+        player.voiceState = state;
+        if (JSON.stringify(Object.keys(state).sort()) === TEMPLATE)
+            player.node.send(state);
     }
 }
 exports.Manager = Manager;
